@@ -1,15 +1,15 @@
 package com.example.orderservice.controller;
 
-import com.example.basedomainservice.dto.Order;
-import com.example.basedomainservice.dto.OrderEvent;
 import com.example.orderservice.kafka.OrderProducer;
+import com.example.persistenceservice.entity.Order;
+import com.example.persistenceservice.entity.OrderEvent;
+import com.example.persistenceservice.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -26,7 +26,7 @@ public class OrderController {
     @PostMapping("/orders")
     public String placeOrder(@RequestBody Order order) {
 
-        order.setOrderId(UUID.randomUUID().toString());
+        //order.setOrderId(Integer.parseInt(UUID.randomUUID().toString()));
 
         OrderEvent orderEvent = new OrderEvent();
         orderEvent.setStatus("PENDING");

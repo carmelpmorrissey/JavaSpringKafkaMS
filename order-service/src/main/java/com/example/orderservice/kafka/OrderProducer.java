@@ -1,6 +1,6 @@
 package com.example.orderservice.kafka;
 
-import com.example.basedomainservice.dto.OrderEvent;
+import com.example.persistenceservice.entity.OrderEvent;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
